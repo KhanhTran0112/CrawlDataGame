@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -58,11 +59,14 @@ namespace CrawlChplay
         {
             string html = CrawlDataFromURL("https://apkpure.com"+url);
 
+            string name = Regex.Match(html, @"<div class=""title-like""(.+?)</h1>", RegexOptions.Singleline).Value;
+            name = Regex.Match(name, @"<h1>(.+?)</h1>", RegexOptions.Singleline).Value.Replace("<h1>", "").Replace("</h1>", "");
+            string nameSaveImage = name.Replace(" ", "_").Replace(":", "").Replace("(", "").Replace(")", "").Replace("/", "_").Replace("|", "_");
+
             string linkImage = Regex.Match(html, @"<div class=""icon""(.+?)<div class=""title-like""", RegexOptions.Singleline).Value;
             linkImage = Regex.Match(linkImage, @"src=""(.+?)""></div>", RegexOptions.Singleline).Value.Replace("src=\"", "").Replace("\"></div>", "");
-            
-            string name = Regex.Match(html, @"<div class=""title-like""(.+?)</h1>", RegexOptions.Singleline).Value;
-            name= Regex.Match(name, @"<h1>(.+?)</h1>", RegexOptions.Singleline).Value.Replace("<h1>", "").Replace("</h1>", "");
+            DownloadImage(linkImage, "D:\\Projects\\" + nameSaveImage + ".png");
+            Console.WriteLine("Download thành công");
 
             string developer = Regex.Match(html, @"<p itemprop=""publisher""(.+?)<div class=""ny-down""", RegexOptions.Singleline).Value;
             developer = Regex.Match(developer, @"<p itemprop=""publisher""(.+?)</a></p>", RegexOptions.Singleline).Value;
@@ -93,13 +97,20 @@ namespace CrawlChplay
             Console.OutputEncoding = Encoding.UTF8;
             Console.WriteLine("Đang lưu dữ liệu...");
             Game();
-            for(int i = 0; i < gameOverviews.Count; i++)
+            for(int i = 502; i < gameOverviews.Count; i++)
             {
                 GameInfor(gameOverviews[i].url);
                 Console.WriteLine(gameInfors[i].name);
             }
             
             Console.ReadKey();
+        }
+        public static void DownloadImage(string link, string address)
+        {
+            using(WebClient wc = new WebClient())
+            {
+                wc.DownloadFile(link, address);
+            }
         }
     }
 }
