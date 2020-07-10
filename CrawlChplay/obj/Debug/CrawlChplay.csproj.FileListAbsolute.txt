@@ -1,0 +1,7 @@
+D:\Khanh Trần\CrawlChplay\CrawlChplay\bin\Debug\CrawlChplay.exe.config
+D:\Khanh Trần\CrawlChplay\CrawlChplay\bin\Debug\CrawlChplay.exe
+D:\Khanh Trần\CrawlChplay\CrawlChplay\bin\Debug\CrawlChplay.pdb
+D:\Khanh Trần\CrawlChplay\CrawlChplay\obj\Debug\CrawlChplay.csprojAssemblyReference.cache
+D:\Khanh Trần\CrawlChplay\CrawlChplay\obj\Debug\CrawlChplay.csproj.CoreCompileInputs.cache
+D:\Khanh Trần\CrawlChplay\CrawlChplay\obj\Debug\CrawlChplay.exe
+D:\Khanh Trần\CrawlChplay\CrawlChplay\obj\Debug\CrawlChplay.pdb
