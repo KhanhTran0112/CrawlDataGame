@@ -9,6 +9,7 @@ namespace CrawlChplay
     public class GameInfor
     {
         public string name { get; set; }
+        public string nameSaveImage { get; set; }
         public string linkImage { get; set; }
         public string developer { get; set; }
         public string fileSize { get; set; }
@@ -18,9 +19,10 @@ namespace CrawlChplay
         public string linkDownload { get; set; }
 
         public GameInfor() { }
-        public GameInfor(string name, string linkImage, string developer, string fileSize, string description, string detailedDescription, string category, string linkDownload)
+        public GameInfor(string name, string nameSaveImage, string linkImage, string developer, string fileSize, string description, string detailedDescription, string category, string linkDownload)
         {
             this.name = name;
+            this.nameSaveImage = nameSaveImage;
             this.linkImage = linkImage;
             this.developer = developer;
             this.fileSize = fileSize;
